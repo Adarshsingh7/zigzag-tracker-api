@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const User = require('./user.model');
+const stopsRouter = require('./stop.controller');
 
 app.use(express.json());
 app.use(cors());
@@ -56,5 +57,7 @@ app.patch('/api/:id', async (req, res) => {
     });
   }
 });
+
+app.use(stopsRouter);
 
 module.exports = app;
