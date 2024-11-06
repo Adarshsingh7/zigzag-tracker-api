@@ -24,6 +24,10 @@ const stopSchema = new mongoose.Schema({
       }
     },
   },
+  isArrived: {
+    type: Boolean,
+    default: false,
+  },
   longitude: {
     type: Number,
     required: true,
