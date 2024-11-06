@@ -39,7 +39,13 @@ router.get('/stops/:id', async (req, res) => {
 // Update a stop by ID
 router.patch('/stops/:id', async (req, res) => {
   const updates = Object.keys(req.body);
-  const allowedUpdates = ['name', 'location', 'description'];
+  const allowedUpdates = [
+    'name',
+    'location',
+    'description',
+    'latitude',
+    'longitude',
+  ];
   const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)
   );

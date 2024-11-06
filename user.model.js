@@ -14,16 +14,17 @@ const User = new Schema({
   },
 });
 
-User.pre('save', async function (next) {
+User.pre(/^findOneAnd/, async function (next) {
   const Stop = mongoose.model('Stop');
   const stops = await Stop.find();
-  isWithinRange(lat1, lon1, lat2, lon2);
+  // const data = this.findOne();
+  console.log(this._update);
 
   for (let stop of stops) {
     if (
       isWithinRange(
-        this.latitude,
-        this.longitude,
+        this._update.latitude,
+        this._update.longitude,
         stop.latitude,
         stop.longitude
       )

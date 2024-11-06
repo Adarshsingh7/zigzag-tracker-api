@@ -41,7 +41,6 @@ app.post('/api', async (req, res) => {
 app.patch('/api/:id', async (req, res) => {
   try {
     const id = req.params.id;
-    console.log(req.body);
     const user = await User.findOneAndUpdate({ itemId: id }, req.body, {
       runValidators: true,
       new: true,
@@ -51,6 +50,7 @@ app.patch('/api/:id', async (req, res) => {
       user,
     });
   } catch (err) {
+    console.log(err);
     res.status(404).json({
       status: 'fail',
       message: err,
